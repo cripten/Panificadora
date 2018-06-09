@@ -1,0 +1,51 @@
+<% include ../partials/link.ejs %>
+<div class="container" style = "padding-top:80px;">
+	<div class="mx-auto col-md-6  col-sm-offset-3">
+
+		<h1><span class="fas fa-sign-in-alt"></span> Signup</h1>
+
+		<% if(messages.length > 0) { %>
+			<div class="alert alert-danger">
+				<% messages.forEach(function(message) { %>
+					<p><%= message %></p>
+				<% }); %>
+			</div>
+		<% } %>
+
+		<!-- LOGIN FORM -->
+		<form action="/user/signup" method="post">
+			<div class="form-group">
+				<label>Nombre</label>
+				<input type="text" class="form-control" name="nombre">
+			</div>
+			<div class="form-group">
+				<label>Apellido</label>
+				<input type="text" class="form-control" name="apellido">
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="text" class="form-control" name="email">
+			</div>
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" class="form-control" name="username">
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" name="password">
+			</div>
+			<div class="form-group">
+				<label>Repeat Password</label>
+				<input type="password" class="form-control" name="passwordConfirm">
+			</div>
+			<input type="hidden" name="tipo" value="client">
+			<button type="submit" class="col-md-5 col-sm-12 btn btn-warning"  style= "color:white;">Signup</button>
+		</form>
+		<hr>
+
+		<p>Already have an account? <a href="/user/login">Login</a></p>
+		<p>Or go <a href="/">home</a>.</p>
+
+
+	</div>
+</div>

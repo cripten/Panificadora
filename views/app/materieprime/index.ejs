@@ -1,0 +1,61 @@
+<% include ../../partials/layout.ejs %>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <h1 class="text-center pacifico"> Panel de administración </h1>
+    <hr class="cust-hr">
+    <a href="/app/materieprime/new" class="btn btn-primary btn-lg active"><i class="fas fa-plus"></i> Nueva Materia Prima</a>
+    <br>
+    <br>
+    <caption>Materias primas actuales</caption>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Presentacion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(materieprime.length > 0){ %>
+          <% materieprime.forEach(function(mp){ %>
+    				<tr>
+              <td><%= mp._id %> </td>
+              <td><%= mp.nombre %> </td>
+              <td><%= mp.presentacion %></td>
+              <td>
+                <form action="/app/materieprime/<%= mp._id %>/edit" method="GET" class="link">
+                  <button type="submit" class="btn btn-warning btn-lg right-space"><i class="fas fa-pencil-alt"></i></button><!--edit button-->
+                </form>
+                <!--delete button-->
+                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal<%= mp._id %>"><i class="far fa-trash-alt"></i></button>
+
+                <div class="modal fade" id="myModal<%= mp._id %>" tabindex="-1" role="dialog" arialabelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel">Materia Prima:<%= mp.name %></h4>
+                          <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                            <span aria-hidden="true"> &times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body"><p class="modal-title" id="myModalLabel"> Está seguro de que quiere eliminar esta materia prima?</h4></div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                          <form action="/app/materieprime/<%= mp._id%>?_method=delete" class="link" method="POST">
+                            <button type="submit" class="btn btn-primary"> Confirmar</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </td>
+            </tr>
+    			<% }); %>
+        <% } else{ %>
+          <td colspan="6" class="text-center"> No hay materia prima para mostrar</td>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

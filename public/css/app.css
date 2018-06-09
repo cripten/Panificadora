@@ -1,0 +1,185 @@
+/*main*/
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.todo{
+	z-index:90;
+	filter: alpha(opacity=80);
+	opacity: .8;
+}
+header{
+    width: 100%;
+    height: 60px;
+   	background-color: #1690d1;
+}
+.icon-menu{
+    font-size: 30px;
+    color: white;
+    position: relative;
+    left: 15px;
+    top: 5px;
+    border:1px solid transparent;
+    transition: all 300ms;
+    padding:0px 4px;
+    cursor:pointer;
+}
+.icon-menu:hover{
+    border:1px solid white;
+}
+/*menu*/
+.menu{
+    width: 80%;
+    height: 100vh;
+    background-color:#363636;
+    margin-left: -80%;
+    position:fixed;
+    overflow: hidden;
+		z-index: 100;
+}
+.menu-show{
+    margin-left:0%;
+    transition:all 500ms;
+		filter: alpha(opacity=80);
+		opacity: .8;
+}
+.line:hover{
+    background-color:#1690d1;
+    cursor: pointer;
+
+}
+.line{
+    margin-top:40px;
+    padding: 20px;
+}
+.line i {
+    color: white;
+    font-size: 30px;
+}
+.line a{
+	  color: white;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.right-space{
+	margin-right:0.5em;
+}
+
+/*para los botenes submit con esta clase*/
+form.link{
+	display: inline-block;
+}
+form.link input[type="submit"]{
+	background-color: transparent;
+	border:none;
+	color:rgb(200,50,50);
+}
+
+/*custom buttons*/
+/*button {
+  margin: 20px 0;
+  line-height: 34px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  outline:none !important;
+  width:100%;
+}*/
+
+button:active {
+
+  outline:none;
+}
+
+button.ribbon {
+
+  outline:none;
+  outline-color: transparent;
+}
+button.ribbon:before, button.ribbon:after {
+  top: 5px;
+  z-index: -10;
+}
+button.ribbon:before {
+  border-color: #53dab6 #53dab6 #53dab6 transparent;
+  left: -25px;
+  border-width: 17px;
+}
+button.ribbon:after {
+  border-color: #53dab6 transparent #53dab6 #53dab6;
+  right: -25px;
+  border-width: 17px;
+}
+
+button:before, button:after {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-style: solid;
+  border-width: 0;
+  outline:none;
+}
+
+button.btn-default:before {
+  border-color: #757575 #757575 #757575 transparent;
+    }
+    button.btn-default:after {
+  border-color: #757575 transparent #757575 #757575;
+    }
+
+
+
+    button.btn-primary:before {
+  border-color: #2e6da4 #2e6da4 #2e6da4 transparent;
+    }
+    button.btn-primary:after {
+  border-color: #2e6da4 transparent #2e6da4 #2e6da4;
+    }
+
+
+    button.btn-success:before {
+  border-color: #398439 #398439 #398439 transparent;
+    }
+    button.btn-success:after {
+  border-color: #398439 transparent #398439 #398439;
+    }
+
+
+    button.btn-info:before {
+  border-color: #269abc #269abc #269abc transparent;
+    }
+    button.btn-info:after {
+  border-color: #269abc transparent #269abc #269abc;
+    }
+
+
+    button.btn-warning:before {
+  border-color: #d58512 #d58512 #d58512 transparent;
+    }
+    button.btn-warning:after {
+  border-color: #d58512 transparent #d58512 #d58512;
+    }
+
+
+    button.btn-danger:before {
+  border-color: #ac2925 #ac2925 #ac2925 transparent;
+    }
+    button.btn-danger:after {
+  border-color: #ac2925 transparent #ac2925 #ac2925;
+    }
+
+
+@media (max-width: 575.98px) {
+	body{
+		background-color:#eee;
+	}
+	.into{
+		display:block;
+		margin-top:10px;
+	}
+}

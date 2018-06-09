@@ -1,0 +1,40 @@
+<% include ../../partials/layout.ejs %>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <h1 class="text-center pacifico">Historial de servicios </h1>
+    <hr class="cust-hr">
+    <br>
+    <br>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="2">Servicio</th>
+            <th colspan="2">Hechos</th>
+            <th colspan="2">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(historial.length > 0){ %>
+            <% historial.forEach(function(register){ %>
+      				<tr>
+                <td colspan="2"><%= register.service.title %> </td>
+                <td colspan="2"><%= register.contador %></td>
+                <td colspan="2">
+                  <form action="/app/register" method="GET" class="link">
+                    <input type="hidden" name="userid" value="<%= userid %>">
+                    <input type="hidden" name="servid" value="<%= register.service._id %>">
+                    <button type="submit" class="btn btn-success btn-sm right-space"><i class="far fa-eye"></i></button><!--edit button-->
+                  </form>
+                </td>
+              </tr>
+      			<% }); %>
+          <% } else{ %>
+            <td colspan="6" class="text-center"> No hay registros para mostrar</td>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

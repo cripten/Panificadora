@@ -1,0 +1,35 @@
+<% include ../partials/link.ejs %>
+<div class="container" style = "padding-top:80px;">
+	<div class="mx-auto col-md-6 col-sm-offset-3">
+
+		<h1><i class="fas fa-sign-in-alt"></i> Login</h1>
+
+		<% if(messages.length > 0) { %>
+			<div class="alert alert-danger">
+				<% messages.forEach(function(message) { %>
+					<p><%= message %></p>
+				<% }); %>
+			</div>
+		<% } %>
+
+		<!-- LOGIN FORM -->
+		<form action="/user/login" method="post">
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" class="form-control" name="username">
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" name="password">
+			</div>
+			<button type="submit" class=" col-md-5 col-sm-12 btn btn-warning"  style= "color:white;">Login</button>
+		</form>
+
+		<hr>
+
+		<p>Need an account? <a href="/user/signup">Signup</a></p>
+		<p>Or go <a href="/">home</a>.</p>
+
+
+	</div>
+</div>

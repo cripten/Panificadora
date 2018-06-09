@@ -1,0 +1,56 @@
+<% include ../../partials/layout.ejs %>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <h1 class="text-center pacifico">Historial de servicios </h1>
+    <hr class="cust-hr">
+    <br>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>fecha</th>
+          <th>Servicio</th>
+          <th>Hechos</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(registers.length > 0){ %>
+          <% registers.forEach(function(register){ %>
+    				<tr>
+              <td><%= register.date_created %> </td>
+              <td><%= register.serv.title %> </td>
+              <td><%= register.contador %></td>
+              <td>
+                <!--delete button-->
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal<%= register._id %>"><i class="far fa-trash-alt"></i></button>
+
+                <div class="modal fade" id="myModal<%= register._id %>" tabindex="-1" role="dialog" arialabelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel">Borrar %></h4>
+                          <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                            <span aria-hidden="true"> &times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body"><p class="modal-title" id="myModalLabel"> Está seguro que de que quiere eliminar este registro?</h4></div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                          <form action="/app/register/<%= register._id%>?_method=delete" class="link" method="POST">
+                            <button type="submit" class="btn btn-primary"> Confirmar</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </td>
+            </tr>
+    			<% }); %>
+        <% } else{ %>
+          <td colspan="6" class="text-center"> No hay registros para mostrar</td>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>

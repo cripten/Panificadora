@@ -1,0 +1,67 @@
+<% include ../../partials/layout.ejs %>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <h1 class="text-center pacifico"> Panel de administración </h1>
+    <hr class="cust-hr">
+    <a href="/app/staff/new" class="btn btn-primary btn-lg active"><i class="fas fa-plus"></i> Nuevo personal </a>
+    <br>
+    <br>
+    <caption>Usuarios actuales</caption>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% var cont = 1; if(users.length > 0){ %>
+            <% users.forEach(function(usuario){ %>
+      				<tr>
+                <td><%= cont %> </td>
+                <td><%= usuario.nombre %> <%= usuario.apellido  %> </td>
+                <td><%= usuario.email %></td>
+                <td><%= usuario.tipo %></td>
+                <td>
+                  <!--Edit button-->
+                  <form action="/app/staff/<%= usuario._id %>/edit" method="GET" class="link">
+                    <button type="submit" class="btn btn-warning btn-sm right-space"><i class="fas fa-pencil-alt"></i></button><!--edit button-->
+                  </form>
+                  <!--delete button-->
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal<%= usuario._id %>"><i class="far fa-trash-alt"></i></button>
+
+                  <div class="modal fade" id="myModal<%= usuario._id %>" tabindex="-1" role="dialog" arialabelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Usuario:<%= usuario.name %></h4>
+                            <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                              <span aria-hidden="true"> &times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body"><p class="modal-title" id="myModalLabel"> Está seguro que de que quiere eliminar este usuario?</h4></div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <form action="/app/staff/<%= usuario._id%>?_method=delete" class="link" method="POST">
+                              <button type="submit" class="btn btn-primary"> Confirmar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </td>
+              </tr>
+      			<% cont++; }); %>
+          <% } else{ %>
+            <td colspan="6" class="text-center"> No hay usuarios para mostrar</td>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
